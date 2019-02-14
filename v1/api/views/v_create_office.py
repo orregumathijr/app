@@ -1,7 +1,5 @@
 from flask import make_response, jsonify, request, abort, Blueprint
 from app.api.v1.models.create_office import ModelOffice, offices
-# from utils.validations import raise_error, check_office_keys, on_success, office_restrictions
-# import json
 offices = Blueprint('offices', __name__)
 
 
@@ -18,7 +16,7 @@ class Office:
             }), 201
 
     """
-      Fetch all the existing offices.
+     Fetch all the existing offices.
     """
     @office.route('/offices', methods=['GET']) 
     def get_offices():
@@ -40,7 +38,7 @@ class Office:
                 }), 200)
         return make_response(jsonify({
             "message": "Office not available"
-            }), 404)
+            }), 204)
 
     """
      Delete a specific office.
@@ -55,6 +53,6 @@ class Office:
                 }), 200)
         return make_response(jsonify({
             "message": "That office is not available"
-            }), 404)
+            }), 204)
 
   
